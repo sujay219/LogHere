@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.wildox.logger"
-        minSdkVersion 15
-        targetSdkVersion 27
+        applicationId "com.github.sujay219.loghere.sample"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -19,11 +19,17 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:27.0.2'
+    /*compile 'com.android.support:appcompat-v7:27.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:27.0.2'
 
     //debugCompile project(path: ':loghere', configuration: 'debug')
     //releaseCompile project(path: ':loghere', configuration: 'release')
-    compile project(':loghere')
+    compile project(':loghere')*/
+
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibrary}"
+    implementation "com.android.support:design:${rootProject.ext.supportLibrary}"
+
+    //compile project (':logger')
+    implementation 'com.github.sujay219:logger:1.0'
 }
