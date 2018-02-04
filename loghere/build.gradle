@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
@@ -98,8 +97,8 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
-    user = properties.getProperty("bintray.kumarsujay21")
-    key = properties.getProperty("bintray.8c1cf8c98a5f38920172e385fd0ea52f413584ba")
+    user = "kumarsujay21" // "sujay219" //properties.getProperty("bintray.user")
+    key = "8c1cf8c98a5f38920172e385fd0ea52f413584ba" // properties.getProperty("bintray.apikey")
 
     configurations = ['archives']
 
