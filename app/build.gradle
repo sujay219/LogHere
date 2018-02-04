@@ -30,6 +30,6 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibrary}"
     implementation "com.android.support:design:${rootProject.ext.supportLibrary}"
 
-    //compile project (':logger')
-    implementation 'com.github.sujay219:logger:1.0'
+    //compile project (':loghere')
+    implementation 'com.github.sujay219:loghere:1.0'
 }

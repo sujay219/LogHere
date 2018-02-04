@@ -4,7 +4,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // This is the library version used when deploying the artifact
-version = "1.0.1"
+version = "1.0"
 
 android {
     compileSdkVersion 27
@@ -98,8 +98,8 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    user = properties.getProperty("bintray.kumarsujay21")
+    key = properties.getProperty("bintray.8c1cf8c98a5f38920172e385fd0ea52f413584ba")
 
     configurations = ['archives']
 
