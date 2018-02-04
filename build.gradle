@@ -3,10 +3,7 @@
 buildscript {
     repositories {
         jcenter()
-        maven {
-            url "https://dl.bintray.com/kumarsujay21/LogHere"
-            name 'Google'
-        }
+        maven { url 'https://jitpack.io' }
         google()
     }
     dependencies {
@@ -22,9 +19,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven {
-            url  "https://dl.bintray.com/kumarsujay21/LogHere"
-        }
+        maven { url 'https://jitpack.io' }
         google()
     }
 }
