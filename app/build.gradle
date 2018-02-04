@@ -19,16 +19,10 @@ android {
 }
 
 dependencies {
-    /*compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:27.0.2'
-
-    compile project(':loghere')*/
 
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibrary}"
     implementation "com.android.support:design:${rootProject.ext.supportLibrary}"
-
     //compile project (':loghere')
     //implementation 'com.github.sujay219:loghere:1.0'
-    compile 'com.github.sujay219:Logger:master-SNAPSHOT'
+    implementation 'com.github.sujay219:Logger:master-SNAPSHOT'
 }
