@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
          * Setting the debug mode like this would avoid
          * printing the logs if it's in release mode
           */
-        LogHere.setDebugMode(BuildConfig.DEBUG);
+        //LogHere.setDebugMode(BuildConfig.DEBUG);
         //LogHere.setPackageName(getPackageName());
 
         FloatingActionButton seeLogs = (FloatingActionButton) findViewById(R.id.see_logs);
