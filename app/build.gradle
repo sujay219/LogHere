@@ -22,4 +22,5 @@ dependencies {
 
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibrary}"
     implementation "com.android.support:design:${rootProject.ext.supportLibrary}"
+    implementation 'com.github.sujay219:LogHere:1.0.7'
 }
