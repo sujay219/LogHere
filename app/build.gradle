@@ -27,5 +27,5 @@ dependencies {
     //implementation 'com.github.sujay219:loghere:v1.0'
     // compile 'com.github.sujay219:Logger:1.0.1'
 
-    compile 'com.github.sujay219:LogHere:1.0.3'
+    compile 'com.github.sujay219:LogHere:1.0.6'
 }
