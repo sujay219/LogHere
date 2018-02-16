@@ -24,8 +24,6 @@ dependencies {
     implementation "com.android.support:design:${rootProject.ext.supportLibrary}"
     //compile project (':loghere')
     //implementation 'com.github.sujay219:loghere:1.0'
-    //implementation 'com.github.sujay219:loghere:v1.0'
-    // compile 'com.github.sujay219:Logger:1.0.1'
-
-    compile 'com.github.sujay219:LogHere:1.0.6'
+    //implementation 'com.github.jitpack:gradle-simple:1.0'
+    // implementation 'com.github.sujay219:loghere:1.0'
 }
