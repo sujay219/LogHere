@@ -32,8 +32,8 @@ public class LogHere {
      */
     public static void initialize(boolean debugMode, int logType, String uniqueCode) {
 
-        if (UNIQUE_CODE.length() > 20) {
-            Log.e(UNIQUE_CODE.substring(0, UNIQUE_CODE.length()), "Unique code must be less than 20 characters");
+        if (uniqueCode.length() > 20) {
+            Log.e(uniqueCode.substring(0, uniqueCode.length()), "Unique code must be less than 20 characters");
             return;
         }
         DEBUG_MODE = debugMode;
@@ -57,9 +57,8 @@ public class LogHere {
             int lineNumber = element.getLineNumber();
             String methodName = element.getMethodName();
 
-            String tmp = fileName + "(" + String.valueOf(lineNumber) + ")";
-            Log.e(tmp.substring(0, ((tmp.length() > 20) ? 20 : tmp.length())),
-                    methodName + "()" + " : " + message);
+            String tmp = fileName + "." + methodName + "(" + String.valueOf(lineNumber) + ")";
+            Log.e(UNIQUE_CODE, tmp + ": " + message);
         }
     }
 
@@ -123,9 +122,6 @@ public class LogHere {
             if (!element.isNativeMethod()) {
 
                 String fileName = element.getFileName();
-                if (fileName.length() > 20)
-                    fileName = removeVowels(fileName);
-
                 if (fileName.contains("."))
                     fileName = fileName.substring(0, fileName.indexOf("."));
 
@@ -143,9 +139,5 @@ public class LogHere {
             }
         }
         return trace.toString();
-    }
-
-    private static String removeVowels(String fileName) {
-        return fileName.replaceAll("[aeiouAEIOU]", "");
     }
 }

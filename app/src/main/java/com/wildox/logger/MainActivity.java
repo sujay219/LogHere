@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.wildox.loghere.LogHere;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         LogHere.initialize(BuildConfig.DEBUG, LogHere.INFO, "wildox");
         LogHere.initialize(BuildConfig.DEBUG, LogHere.WARNING, "wildox");
         LogHere.initialize(BuildConfig.DEBUG, LogHere.ERROR, "wildox");
+        Log.e("haha", "this");
 
         FloatingActionButton seeLogs = (FloatingActionButton) findViewById(R.id.see_logs);
         seeLogs.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void thisIsMe() {
-        //thisIsNotMe();
+        LogHere.e("mesg");
+        thisIsNotMe();
+    }
+
+    void thisIsNotMe() {
+
+        LogHere.e("meg", 1);
     }
 }
