@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.wildox.loghere.LogHere;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,12 +17,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /**
-         * Setting the debug mode like this would avoid
-         * printing the logs if it's in release mode
-          */
-        //LogHere.setDebugMode(BuildConfig.DEBUG);
-        //LogHere.setPackageName(getPackageName());
+        // Setting the debug mode like this would avoid
+        // printing the logs if it's in release mode
+        // Choose one of these ..
+        LogHere.initialize(BuildConfig.DEBUG, LogHere.VERBOSE, "wildox");
+        LogHere.initialize(BuildConfig.DEBUG, LogHere.DEBUG, "wildox");
+        LogHere.initialize(BuildConfig.DEBUG, LogHere.INFO, "wildox");
+        LogHere.initialize(BuildConfig.DEBUG, LogHere.WARNING, "wildox");
+        LogHere.initialize(BuildConfig.DEBUG, LogHere.ERROR, "wildox");
 
         FloatingActionButton seeLogs = (FloatingActionButton) findViewById(R.id.see_logs);
         seeLogs.setOnClickListener(new View.OnClickListener() {
