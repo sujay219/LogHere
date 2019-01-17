@@ -4,10 +4,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
-import com.wildox.loghere.LogHere;
+import com.wildox.loghere.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,11 +20,7 @@ public class MainActivity extends AppCompatActivity {
         // Setting the debug mode like this would avoid
         // printing the logs if it's in release mode
         // Choose one of these ..
-        LogHere.initialize(BuildConfig.DEBUG, LogHere.VERBOSE, "wildox");
-        LogHere.initialize(BuildConfig.DEBUG, LogHere.DEBUG, "wildox");
-        LogHere.initialize(BuildConfig.DEBUG, LogHere.INFO, "wildox");
-        LogHere.initialize(BuildConfig.DEBUG, LogHere.WARNING, "wildox");
-        LogHere.initialize(BuildConfig.DEBUG, LogHere.ERROR, "wildox");
+        Log.initialize(BuildConfig.DEBUG, "wildox");
         Log.e("haha", "this");
 
         FloatingActionButton seeLogs = (FloatingActionButton) findViewById(R.id.see_logs);
@@ -38,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void thisIsMe() {
-        LogHere.e("mesg");
+        Log.e("mesg");
         thisIsNotMe();
     }
 
     void thisIsNotMe() {
 
-        LogHere.e("meg", 1);
+        Log.e("meg", 1);
     }
 }

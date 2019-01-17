@@ -28,17 +28,17 @@ Ever spent time to delete ALL LOGS from your code for release??
             ...
             
             // Choose ONLY ONE of these ..
-            LogHere.initialize(BuildConfig.DEBUG, LogHere.VERBOSE, "wildox");
-            LogHere.initialize(BuildConfig.DEBUG, LogHere.DEBUG, "wildox");
-            LogHere.initialize(BuildConfig.DEBUG, LogHere.INFO, "wildox");
-            LogHere.initialize(BuildConfig.DEBUG, LogHere.WARNING, "wildox");
-            LogHere.initialize(BuildConfig.DEBUG, LogHere.ERROR, "wildox");
+            Log.initialize(BuildConfig.DEBUG, "wildox");
+            Log.initialize(BuildConfig.DEBUG, "wildox");
+            Log.initialize(BuildConfig.DEBUG, "wildox");
+            Log.initialize(BuildConfig.DEBUG, "wildox");
+            Log.initialize(BuildConfig.DEBUG, "wildox");
         }
     
 - Step 4: Whenever you want to log any particular message in a particular line of MainActivity.java.
         
         45  someFunction() {
-        46      LogHere.e("This is message");
+        46      Log.e("This is message");
         47  }
 
 
@@ -49,12 +49,12 @@ It'll be logged as, (As seen in logcat)
 - Step 5: Logging with stack trace up to 3 parents, 0, 1, 2
         
         44  someFunction() {
-        45      LogHere.e("This is message");
+        45      Log.e("This is message");
         46      someOtherFunction();
         47  }
         48
         49 someOtherFunction() {
-        50      LogHere.e("This is message", 1);
+        50      Log.e("This is message", 1);
         51 }
 
 It'll be logged as, (As seen in logcat)
