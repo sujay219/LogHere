@@ -19,19 +19,13 @@ Ever spent time to delete ALL LOGS from your code for release??
 - Step 2: Add dependency to app level gradle file
 
         dependencies {
-            compile 'com.github.sujay219:LogHere:1.0.10'
+            compile 'com.github.sujay219:LogHere:1.30'
         }
     
-- Step 3: Now, with the help of our LogHere library, you don't need to delete your logs, just initialize at the beginning
+- Step 3: Now, with the help of our LogHere library, you don't need to delete your logs, just initialize at the beginning (Better be in AppController(Application initialization))s
 
         onCreate(Bundle savedInstanceState) {
             ...
-            
-            // Choose ONLY ONE of these ..
-            Log.initialize(BuildConfig.DEBUG, "wildox");
-            Log.initialize(BuildConfig.DEBUG, "wildox");
-            Log.initialize(BuildConfig.DEBUG, "wildox");
-            Log.initialize(BuildConfig.DEBUG, "wildox");
             Log.initialize(BuildConfig.DEBUG, "wildox");
         }
     

@@ -20,13 +20,51 @@ public class Log {
     public static void initialize(boolean debugMode, String uniqueCode) {
 
         if (uniqueCode.length() > 20) {
-            android.util.Log.e(uniqueCode.substring(0, uniqueCode.length()), "Unique code must be less than 20 characters");
+            android.util.Log.e("LogHere", "Unique code must be less than 20 characters");
             return;
         }
         DEBUG_MODE = debugMode;
         UNIQUE_CODE = uniqueCode;
     }
 
+    // Single param functions
+    public static void d(String message) {
+        if (!DEBUG_MODE) {
+            return;
+        }
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        String fileStack = getOneStack(stack[3]);
+        android.util.Log.d(UNIQUE_CODE, fileStack + ": " + message);
+    }
+
+    public static void e(String message) {
+        if (!DEBUG_MODE) {
+            return;
+        }
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        String fileStack = getOneStack(stack[3]);
+        android.util.Log.e(UNIQUE_CODE, fileStack + ": " + message);
+    }
+
+    public static void i(String message) {
+        if (!DEBUG_MODE) {
+            return;
+        }
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        String fileStack = getOneStack(stack[3]);
+        android.util.Log.i(UNIQUE_CODE, fileStack + ": " + message);
+    }
+
+    public static void v(String message) {
+        if (!DEBUG_MODE) {
+            return;
+        }
+        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
+        String fileStack = getOneStack(stack[3]);
+        android.util.Log.v(UNIQUE_CODE, fileStack + ": " + message);
+    }
+
+    // Double param
     public static void d(String tag, String message) {
         if (!DEBUG_MODE) {
             return;
@@ -45,13 +83,13 @@ public class Log {
         android.util.Log.e(tag, fileStack + ": " + message);
     }
 
-    public static void e(String tag, String message, Exception e) {
+    public static void i(String tag, String message) {
         if (!DEBUG_MODE) {
             return;
         }
         StackTraceElement[] stack = Thread.currentThread().getStackTrace();
         String fileStack = getOneStack(stack[3]);
-        android.util.Log.e(tag, fileStack + ": " + message, e);
+        android.util.Log.i(tag, fileStack + ": " + message);
     }
 
     public static void v(String tag, String message) {
@@ -63,15 +101,6 @@ public class Log {
         android.util.Log.v(tag, fileStack + ": " + message);
     }
 
-    public static void e(String message) {
-        if (!DEBUG_MODE) {
-            return;
-        }
-        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-        String fileStack = getOneStack(stack[3]);
-        android.util.Log.e(UNIQUE_CODE, fileStack + ": " + message);
-    }
-
     public static void e(String message, Exception e) {
         if (!DEBUG_MODE) {
             return;
@@ -81,13 +110,13 @@ public class Log {
         android.util.Log.e(UNIQUE_CODE, fileStack + ": " + message, e);
     }
 
-    public static void v(String message) {
+    public static void e(String tag, String message, Exception e) {
         if (!DEBUG_MODE) {
             return;
         }
         StackTraceElement[] stack = Thread.currentThread().getStackTrace();
         String fileStack = getOneStack(stack[3]);
-        android.util.Log.v(UNIQUE_CODE, fileStack + ": " + message);
+        android.util.Log.e(tag, fileStack + ": " + message, e);
     }
 
     public static void e(String tag, String message, Throwable throwable) {
@@ -117,30 +146,27 @@ public class Log {
         android.util.Log.e(UNIQUE_CODE, fileStack, throwable);
     }
 
-    public static void i(String tag, String message) {
-        if (!DEBUG_MODE) {
-            return;
-        }
-        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-        String fileStack = getOneStack(stack[3]);
-        android.util.Log.i(tag, fileStack + ": " + message);
+    public static void e(String message, int parentCount) {
+        sPrint(message, parentCount, "error");
     }
 
+    public static void d(String message, int parentCount) {
+        sPrint(message, parentCount, "debug");
+    }
 
-    public static void i(String message) {
-        if (!DEBUG_MODE) {
-            return;
-        }
-        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-        String fileStack = getOneStack(stack[3]);
-        android.util.Log.i(UNIQUE_CODE, fileStack + ": " + message);
+    public static void v(String message, int parentCount) {
+        sPrint(message, parentCount, "verbose");
+    }
+
+    public static void i(String message, int parentCount) {
+        sPrint(message, parentCount, "info");
     }
 
     /**
      * @param message:     message string to show
      * @param parentCount: 0, 1, 2
      */
-    public static void e(String message, int parentCount) {
+    private static void sPrint(String message, int parentCount, String type) {
 
         if (!DEBUG_MODE)
             return;
@@ -164,7 +190,21 @@ public class Log {
                 android.util.Log.e(UNIQUE_CODE, "parentCount param must be 0, 1 or 2");
                 return;
         }
-        android.util.Log.e(UNIQUE_CODE, fileStack + " << " + message);
+
+        switch (type) {
+            case "error":
+                android.util.Log.e(UNIQUE_CODE, fileStack + " << " + message);
+                break;
+            case "verbose":
+                android.util.Log.e(UNIQUE_CODE, fileStack + " << " + message);
+                break;
+            case "debug":
+                android.util.Log.e(UNIQUE_CODE, fileStack + " << " + message);
+                break;
+            default:
+                android.util.Log.e(UNIQUE_CODE, fileStack + " << " + message);
+                break;
+        }
     }
 
     private static String getOneStack(StackTraceElement... stackTraceElement) {
